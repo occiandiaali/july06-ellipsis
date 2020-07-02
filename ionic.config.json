@@ -1,0 +1,7 @@
+{
+  "name": "ellipsisTABS",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
