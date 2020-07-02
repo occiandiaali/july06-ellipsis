@@ -1,17 +1,45 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
       Tab 1
     </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <!-- <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
-  </ion-header>
+  </ion-header> -->
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-item>
+    <ion-label>Discover</ion-label>
+      <ion-select [(ngModel)]="isType" (ionChange)="nearbyPlace()">
+      <!-- <ion-select-option value="">Select</ion-select-option> -->
+          <ion-select-option value="hospital">Hospital</ion-select-option>
+          <ion-select-option value="restaurant">Restaurant</ion-select-option>
+          <ion-select-option value="bank">Bank</ion-select-option>
+          <ion-select-option value="airport">Airport</ion-select-option>
+          <ion-select-option value="library">Library</ion-select-option>
+          <ion-select-option value="gym">Gym</ion-select-option>
+        <ion-select-option value="atm">Atm</ion-select-option>
+        <ion-select-option value="shopping_mall">Shopping Mall</ion-select-option>
+        <ion-select-option value="police">Police Station</ion-select-option>
+        <ion-select-option value="zoo">Zoo</ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+    <ion-item>
+    <ion-label>Distance</ion-label>
+      <ion-select [(ngModel)]="isKM" (ionChange)="nearbyPlace()">
+      <!-- <ion-select-option value="500">Select</ion-select-option> -->
+          <ion-select-option value="2000">2 KM</ion-select-option>
+          <ion-select-option value="4000">4 KM</ion-select-option>
+          <ion-select-option value="6000">6 KM</ion-select-option>
+          <ion-select-option value="8000">8 KM</ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+    <div #map id="map"></div>
 </ion-content>
