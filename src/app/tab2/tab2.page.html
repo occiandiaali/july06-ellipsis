@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="tertiary">
     <ion-title>
       Tab 2
     </ion-title>
@@ -7,11 +7,22 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-
+  <!-- <ion-list>
+    <ion-item *ngFor="let article of articles">
+      <h2 article.title}}</h2>
+      <p >{{article.description}}</p>
+    <a href="{{article.url}}">Read full story</a>
+    </ion-item>
+  </ion-list> -->
+  <ion-list>
+    <ion-item *ngFor="let article of articles" lines="none">
+      <div class="w3-card-4" >
+        <img src="{{article.urlToImage}}" alt="{{article.author}}" style="width:100%">
+        <div class="w3-container w3-center">
+          <p>{{article.description}}</p>
+          <a href="{{article.url}}">Read full story</a>
+        </div>
+      </div>
+      </ion-item>
+  </ion-list>
 </ion-content>
