@@ -1,5 +1,5 @@
 import { Component, NgZone, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
-import { Geolocation, GeolocationOptions, Geoposition, PositionError } from '@ionic-native/geolocation/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 declare var google;
 
@@ -14,10 +14,12 @@ export class Tab1Page implements AfterViewInit {
   @ViewChild('map') mapElement: ElementRef;
   map:any;
   latLng:any;
-  markers:any;
+  marker:any;
   mapOptions:any;  
   isKM:any=500;
   isType:any='';
+
+  
 
   constructor(private zone: NgZone, private geo: Geolocation) {}
 
@@ -40,26 +42,37 @@ export class Tab1Page implements AfterViewInit {
   } // after view init
 
   createMarker(place){
-    var placeLoc = place;
+    const placeLoc = place;
     console.log('placeLoc',placeLoc);
-    this.markers = new google.maps.Marker({
+    var image = {
+      url: placeLoc.icon,
+      size: new google.maps.Size(71, 71),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(17, 34),
+      scaledSize: new google.maps.Size(25, 25)
+    };
+    let marker = new google.maps.Marker({ // initialise marker so that it would be unique to each
         map: this.map,
-        position: place.geometry.location
+        position: placeLoc.geometry.location,
+        icon: image
     });
 
     let infowindow = new google.maps.InfoWindow();
 
-    google.maps.event.addListener(this.markers, 'click', () => {
+    google.maps.event.addListener(marker, 'click', () => { // marker is local
       this.zone.run(() => {
-        infowindow.setContent(place.name);
-        infowindow.open(this.map, this.markers);
+       let contentStr = '<div><strong>' + placeLoc.name + '</strong><br>' + placeLoc.vicinity + '</div>';
+       
+        infowindow.setContent(contentStr);
+        infowindow.open(this.map, marker); // marker is local
       });
-    });
-  }
+    }); // event listener
+
+  } // create marker
 
   callback(results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
-      for (var i = 0; i < results.length; i++) {
+      for (let i = 0; i < results.length; i++) {
         this.createMarker(results[i]);
       }
     }
@@ -67,7 +80,7 @@ export class Tab1Page implements AfterViewInit {
 
   nearbyPlace(){
     this.loadMap();
-    this.markers = [];
+    this.marker = [];
     let service = new google.maps.places.PlacesService(this.map);
     service.nearbySearch({
               location: this.latLng,
