@@ -13,6 +13,7 @@ export class Tab1Page implements AfterViewInit {
 
   @ViewChild('map') mapElement: ElementRef;
   map:any;
+  infoWindows: any;
   latLng:any;
   marker:any;
   mapOptions:any;  
@@ -21,7 +22,9 @@ export class Tab1Page implements AfterViewInit {
 
   
 
-  constructor(private zone: NgZone, private geo: Geolocation) {}
+  constructor(private zone: NgZone, private geo: Geolocation) {
+    this.infoWindows = [];
+  }
 
   loadMap() {
     this.geo.getCurrentPosition().then((pos) => {
@@ -41,6 +44,13 @@ export class Tab1Page implements AfterViewInit {
     this.loadMap();
   } // after view init
 
+  // to close open info windows
+  closeAllInfoWindows() {
+    for(let window of this.infoWindows) {
+      window.close();
+    }
+  }
+
   createMarker(place){
     const placeLoc = place;
     console.log('placeLoc',placeLoc);
@@ -58,18 +68,22 @@ export class Tab1Page implements AfterViewInit {
     });
 
     // let infowindow = new google.maps.InfoWindow();
+    let infowindow = new google.maps.InfoWindow({
+      pixelOffset: new google.maps.Size(-24, -0) // to align centre of marker
+    });
 
     google.maps.event.addListener(marker, 'click', () => { // marker is local
+      this.closeAllInfoWindows();
       this.zone.run(() => {
        let contentStr = '<div><strong>' + placeLoc.name + '</strong><br>' + placeLoc.vicinity + '</div>';
-       let infowindow = new google.maps.InfoWindow({
-         pixelOffset: new google.maps.Size(-24, -0)
-       });
+       
        
         infowindow.setContent(contentStr);
         infowindow.setAnchor();
         infowindow.open(this.map, marker); // marker is local
+        
       });
+      this.infoWindows.push(infowindow);
     }); // event listener
 
   } // create marker
@@ -80,7 +94,7 @@ export class Tab1Page implements AfterViewInit {
         this.createMarker(results[i]);
       }
     }
-  }
+  } // callback
 
   nearbyPlace(){
     this.loadMap();
