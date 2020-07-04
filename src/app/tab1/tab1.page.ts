@@ -37,30 +37,19 @@ export class Tab1Page implements AfterViewInit {
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
       this.map = new google.maps.Map(this.mapElement.nativeElement, this.mapOptions);
-      let user = new google.maps.Marker({
+
+      let user = new google.maps.Marker({ // user position marker
         map: this.map,
-        title: 'You are here',
         animation: google.maps.Animation.DROP,
         position: this.map.getCenter()
         });
-        let content = "<p>You are here!</p>";          
+        let content = "<p><strong>You are here!</strong></p>";          
         let userInfo = new google.maps.InfoWindow({
         content: content
       });
       google.maps.event.addListener(user, 'click', () => {
         userInfo.open(this.map, user);
-        });
-      
-      // this.marker = this.map.Marker({
-      //   title: 'You are here',
-      //   icon: 'blue',
-      //   animation: 'DROP',
-      //   position: {
-      //     lat: pos.coords.latitude,
-      //     lng: pos.coords.longitude
-      //   }
-      // });
-
+        }); // end of user position marker
 
     }, (error) => { console.log(`Error: ${error}`); });
   } // load map
@@ -92,7 +81,6 @@ export class Tab1Page implements AfterViewInit {
         icon: image
     });
 
-    // let infowindow = new google.maps.InfoWindow();
     let infowindow = new google.maps.InfoWindow({
       pixelOffset: new google.maps.Size(-24, -0) // to align centre of marker
     });
@@ -104,7 +92,6 @@ export class Tab1Page implements AfterViewInit {
        
        
         infowindow.setContent(contentStr);
-        infowindow.setAnchor();
         infowindow.open(this.map, marker); // marker is local
         
       });
@@ -133,8 +120,5 @@ export class Tab1Page implements AfterViewInit {
                 this.callback(results, status);
             });
   } // near by
-
-
-
 
 } // class
