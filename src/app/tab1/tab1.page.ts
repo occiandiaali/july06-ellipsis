@@ -44,7 +44,7 @@ export class Tab1Page implements AfterViewInit {
   createMarker(place){
     const placeLoc = place;
     console.log('placeLoc',placeLoc);
-    var image = {
+    let image = {
       url: placeLoc.icon,
       size: new google.maps.Size(71, 71),
       origin: new google.maps.Point(0, 0),
@@ -57,13 +57,17 @@ export class Tab1Page implements AfterViewInit {
         icon: image
     });
 
-    let infowindow = new google.maps.InfoWindow();
+    // let infowindow = new google.maps.InfoWindow();
 
     google.maps.event.addListener(marker, 'click', () => { // marker is local
       this.zone.run(() => {
        let contentStr = '<div><strong>' + placeLoc.name + '</strong><br>' + placeLoc.vicinity + '</div>';
+       let infowindow = new google.maps.InfoWindow({
+         pixelOffset: new google.maps.Size(-24, -0)
+       });
        
         infowindow.setContent(contentStr);
+        infowindow.setAnchor();
         infowindow.open(this.map, marker); // marker is local
       });
     }); // event listener
