@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="tertiary">
     <ion-title>
-      Tab 3
+      Downloads
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,8 +9,35 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title size="large">Downloads</ion-title>
     </ion-toolbar>
   </ion-header>
 
+  <div class="w3-card-4 w3-center card1">
+  <ion-item class="line-input">
+  <ion-input placeholder="paste video url"></ion-input>
+  <ion-button expand="block" color="tertiary">Download</ion-button>
+  </ion-item>
+  </div>
+
+  <div class="w3-card-4 w3-center card1">
+  <ion-item class="line-input">
+    <ion-input placeholder="paste audio url"></ion-input>
+    <ion-button expand="block" color="tertiary">Download</ion-button>
+    </ion-item>
+  </div>
+
+  <div class="w3-card-4 w3-center card1">
+    <ion-item class="line-input">
+      <ion-input placeholder="paste image url"></ion-input>
+      <ion-button expand="block" color="tertiary">Download</ion-button>
+      </ion-item>
+  </div>
+
+  <div id="note">
+  <ion-note color="danger">
+    User accepts sole responsibility for copyright adherence with respect to downloads.
+    Be sure that the material you download isn't protected by owner's rights.
+  </ion-note>
+  </div>
 </ion-content>
