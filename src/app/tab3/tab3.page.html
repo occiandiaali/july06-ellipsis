@@ -15,8 +15,8 @@
 
   <div class="w3-card-4 w3-center card1">
   <ion-item class="line-input">
-  <ion-input placeholder="paste video url"></ion-input>
-  <ion-button expand="block" color="tertiary">Download</ion-button>
+  <ion-input placeholder="paste video url" [(ngModel)]="videoUrl"></ion-input>
+  <ion-button expand="block" color="tertiary" (click)="downloadAndOpen()">Download</ion-button>
   </ion-item>
   </div>
 

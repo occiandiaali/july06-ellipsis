@@ -3,3 +3,11 @@ ion-item {
     margin-bottom: 1em;
     padding: 1em;
 }
+
+#title_click:link, #title_click:visited, #title_click:active {
+    text-decoration: none;
+    color: darkred;
+}
+#title_click:hover {
+    color: darkgoldenrod;
+}

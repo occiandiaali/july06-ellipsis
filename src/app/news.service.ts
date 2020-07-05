@@ -14,6 +14,6 @@ export class NewsService {
   }
 
   getNews() {
-    return this.httpClient.get(`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.apiKey}`);
+    return this.httpClient.get(`https://newsapi.org/v2/top-headlines?country=ng&apiKey=${this.apiKey}`);
   }
 } // class
