@@ -17,7 +17,8 @@
       <div id="crypto-container" *ngFor="let crypto of objectKeys(cryptos)">
         <span class="left">{{ crypto }}</span>
         <span class="right">{{ cryptos[crypto].USD  | currency:"USD" : "symbol-narrow"}}</span><br>
-        <span class="right">{{ cryptos[crypto].EUR  | currency:"EUR" : "symbol-narrow"}}</span>
+        <span class="right">{{ cryptos[crypto].EUR  | currency:"EUR" : "symbol-narrow"}}</span><br>
+        <span class="right">{{ cryptos[crypto].NGN  | currency:"NGN" : "symbol-narrow"}}</span>
       </div>
     </div>
     <!-- <ion-item >
