@@ -2,18 +2,17 @@ import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { DiscoverPage } from './discover.page';
 
-import { TabsPageRoutingModule } from './tabs-routing.module';
-
-import { TabsPage } from './tabs.page';
+import { DiscoverPageRoutingModule } from './discover-routing.module';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    TabsPageRoutingModule
+    DiscoverPageRoutingModule
   ],
-  declarations: [TabsPage]
+  declarations: [DiscoverPage]
 })
-export class TabsPageModule {}
+export class DiscoverPageModule {}

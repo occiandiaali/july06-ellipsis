@@ -2,17 +2,18 @@ import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Tab1Page } from './tab1.page';
 
-import { Tab1PageRoutingModule } from './tab1-routing.module';
+import { EllipsisPageRoutingModule } from './ellipsis-routing.module';
+
+import { EllipsisPage } from './ellipsis.page';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    Tab1PageRoutingModule
+    EllipsisPageRoutingModule
   ],
-  declarations: [Tab1Page]
+  declarations: [EllipsisPage]
 })
-export class Tab1PageModule {}
+export class EllipsisPageModule {}

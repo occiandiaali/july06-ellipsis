@@ -3,17 +3,18 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Tab2Page } from './tab2.page';
+import { CryptosPage } from './cryptos.page';
 
-import { Tab2PageRoutingModule } from './tab2-routing.module';
+import { CryptosPageRoutingModule } from './cryptos-routing.module';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    Tab2PageRoutingModule
+    RouterModule.forChild([{ path: '', component: CryptosPage }]),
+    CryptosPageRoutingModule,
   ],
-  declarations: [Tab2Page]
+  declarations: [CryptosPage]
 })
-export class Tab2PageModule {}
+export class CryptosPageModule {}

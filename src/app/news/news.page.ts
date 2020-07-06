@@ -4,11 +4,11 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Platform } from '@ionic/angular';
 
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  selector: 'app-news',
+  templateUrl: 'news.page.html',
+  styleUrls: ['news.page.scss']
 })
-export class Tab2Page implements OnInit {
+export class NewsPage implements OnInit {
 
   articles;
   constructor(private newsService: NewsService, private platform: Platform) {}
@@ -16,13 +16,14 @@ export class Tab2Page implements OnInit {
   ngOnInit() {
     this.newsService.getNews().subscribe((data) => {
       console.log(data);
+      // tslint:disable-next-line:no-string-literal
       this.articles = data['articles'];
     });
   }
 
   openUrl() {
     this.platform.ready().then(() => {
-      let browser = new InAppBrowser()
+      const browser = new InAppBrowser();
     });
   }
 

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from './../data.service';
+import { DataService } from '../data.service';
 
 
 @Component({
-  selector: 'app-tab3',
-  templateUrl: 'tab3.page.html',
-  styleUrls: ['tab3.page.scss']
+  selector: 'app-cryptos',
+  templateUrl: 'cryptos.page.html',
+  styleUrls: ['cryptos.page.scss']
 })
-export class Tab3Page implements OnInit {
+export class CryptosPage implements OnInit {
 
   objectKeys = Object.keys;
   cryptos: any;
