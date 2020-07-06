@@ -1,9 +1,19 @@
-.card1 {
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
+div#crypto-container {
+    background: tan;
+    width: 100%;
+    margin: 0 auto 4px auto;
+    padding: 1.5em;
+    box-shadow: 1px 1px 0 lightgrey;
+  }
+  
+  span.left {
+    font-weight: bold;
+  }
+  
+  span.right {
+    float:right;
+  }
 
-#note {
-    text-align: center;
-    padding: 1em;
-}
+  #note {
+      padding: 2em;
+  }

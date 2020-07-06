@@ -2,10 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer/ngx';
-import { File } from '@ionic-native/file/ngx';
+import { DataService } from './data.service';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-// import { DownloadService } from './download.service';
+
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -21,9 +20,9 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
-    BrowserModule, 
-    IonicModule.forRoot(), 
-    AppRoutingModule, 
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
@@ -33,10 +32,8 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
     SplashScreen,
     Geolocation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    FileTransfer,
-    FileTransferObject,
-    File,
-    InAppBrowser
+    InAppBrowser,
+    DataService
   ],
   bootstrap: [AppComponent]
 })

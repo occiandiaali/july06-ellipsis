@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="tertiary">
     <ion-title>
-      Downloads
+      Cryptos
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,35 +9,40 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Downloads</ion-title>
+      <ion-title size="large">Cryptos</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div class="w3-card-4 w3-center card1">
-  <ion-item class="line-input">
-  <ion-input placeholder="paste video url" [(ngModel)]="videoUrl"></ion-input>
-  <ion-button expand="block" color="tertiary" (click)="downloadAndOpen()">Download</ion-button>
-  </ion-item>
-  </div>
-
-  <div class="w3-card-4 w3-center card1">
-  <ion-item class="line-input">
-    <ion-input placeholder="paste audio url"></ion-input>
-    <ion-button expand="block" color="tertiary">Download</ion-button>
+    <div *ngIf="cryptos">
+      <div id="crypto-container" *ngFor="let crypto of objectKeys(cryptos)">
+        <span class="left">{{ crypto }}</span>
+        <span class="right">{{ cryptos[crypto].USD  | currency:"USD" : "symbol-narrow"}}</span><br>
+        <span class="right">{{ cryptos[crypto].EUR  | currency:"EUR" : "symbol-narrow"}}</span>
+      </div>
+    </div>
+    <!-- <ion-item >
+      <ion-label>Currency</ion-label>
+      <ion-select value="currency" okText="OK" cancelText="Cancel">
+      <ion-select-option value="blonde">BTC</ion-select-option>
+      <ion-select-option value="black">ETH</ion-select-option>
+      <ion-select-option value="red">IOT</ion-select-option>
+      </ion-select>
     </ion-item>
-  </div>
+    <ion-item>
+      <div *ngIf="cryptos">
+        <div id="crypto-container" *ngFor="let crypto of objectKeys(cryptos)">
+          <span class="left">{{ crypto }}</span>
+          <span class="right">{{ cryptos[crypto].USD | currency:"USD" : "symbol-narrow"}}</span>
+        </div>
+      </div>
+    </ion-item> -->
 
-  <div class="w3-card-4 w3-center card1">
-    <ion-item class="line-input">
-      <ion-input placeholder="paste image url"></ion-input>
-      <ion-button expand="block" color="tertiary">Download</ion-button>
-      </ion-item>
-  </div>
+  
 
   <div id="note">
   <ion-note color="danger">
-    User accepts sole responsibility for copyright adherence with respect to downloads.
-    Be sure that the material you download isn't protected by owner's rights.
+    User bears sole responsibility for use of information in any trading activity.
+    Data provided is for informational purposes. Consult a professional broker before you trade.
   </ion-note>
   </div>
 </ion-content>
